@@ -88,6 +88,25 @@ let handleLogin = (email, password) => {
     })
 }
 
+let getUserById = (id)=>{
+    return new Promise(async(resolve,reject) => {
+        try {
+            const date = Date.now()
+            console.log("run in getUserById at userService " +date);
+            
+            let user = await db.User.findOne({
+                where:{userId : id},
+                raw:true
+            })
+            if(user) resolve(user)
+            else
+                resolve("can not find user id = " + id )
+        } catch (error) {
+            reject(error)
+        }
+        
+    })
+}
 
 // suport method 
 
@@ -146,5 +165,5 @@ let hashUserPassword = (password) => {
 module.exports = {
     createNewUser: createNewUser,
     handleLogin: handleLogin,
-
+    getUserById:getUserById
 }

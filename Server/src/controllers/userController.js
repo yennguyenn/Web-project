@@ -29,7 +29,15 @@ let handleLogin = async(req,res)=>{
     })
 }
 
+let getUserById = async(req,res)=>{
+    console.log(req.query.id);
+    
+    let userData = await userService.getUserById(req.query.id)
+    return res.status(200).json(userData)   
+}
+
 module.exports = {
     postCreateNewuser:postCreateNewuser,
     handleLogin:handleLogin,
+    getUserById : getUserById,
 }

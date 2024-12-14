@@ -13,10 +13,13 @@ let initWebRouters = (app)=>{
     router.get('/edit-crud',homeControllers.getEditCRUD)
 
     //get API
-    router.post('/api/login',userControllers.handleLogin)
+    router.get("/api/getUserById", userControllers.getUserById)
 
     //post API
     router.post('/api/createNewUser',userControllers.postCreateNewuser)
+    router.post('/api/login',userControllers.handleLogin)
+
+
     return app.use("/",router)
 }
 
