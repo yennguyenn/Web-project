@@ -3,15 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.7",
-=======
-    "client": "file:",
->>>>>>> 82843b0def9981f9f7df7d93462f932ad0526f18
     "cra-template": "1.2.0",
     "date-fns": "^4.1.0",
     "react": "^18.3.1",
