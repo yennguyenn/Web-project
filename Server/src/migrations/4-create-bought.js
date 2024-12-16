@@ -1,7 +1,7 @@
 'use strict';
 
 const { Unique } = require('@sequelize/core/decorators-legacy');
-const invoice = require('../../../Server/src/models/invoice');
+const invoice = require('../models/invoice');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
