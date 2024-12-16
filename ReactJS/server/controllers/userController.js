@@ -24,12 +24,20 @@ let handleLogin = async(req,res)=>{
 
     return res.status(200).json({
         errCode: userData.errCode,
-        message: userData.erressage,
-        userData: userData
+        message: userData.errMessage,
+        userData: userData.user ? userData.user : {}
     })
+}
+
+let getUserById = async(req,res)=>{
+    console.log(req.query.id);
+    
+    let userData = await userService.getUserById(req.query.id)
+    return res.status(200).json(userData)   
 }
 
 module.exports = {
     postCreateNewuser:postCreateNewuser,
     handleLogin:handleLogin,
+    getUserById : getUserById,
 }
