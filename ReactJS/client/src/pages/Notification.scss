@@ -1,0 +1,52 @@
+.noti.form-check-input {
+  --cz-form-check-bg: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--cz-form-check-bg);
+  background-image: var(--cz-form-check-bg-image);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: var(--cz-border-width) solid #cad0d9;
+  flex-shrink: 0;
+  height: 1em;
+  margin-top: .25em;
+  vertical-align: top;
+  width: 1em;
+}
+
+.noti.form-check-input {
+  float: left;
+  margin-left: -1.5em;
+}
+
+.form-switch .form-check-input {
+  background-color: #cad0d9;
+  border: 0 !important;
+  height: 1.5rem;
+  margin-top: 0;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #33b36b !important;
+  background-position: 100%;
+}
+
+.form-switch .form-check-input {
+  --cz-form-switch-bg: url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E);
+  background-image: var(--cz-form-switch-bg);
+  background-position: 0;
+  border-radius: 2.75rem;
+  margin-left: -3.375rem;
+  transition: background-position .15s ease-in-out;
+  width: 2.75rem;
+}
+
+.noti .form-check-input[type=checkbox]:checked {
+  border-radius: 2.75em;
+  border: 1px solid #212529;
+  background-color: #343a40;
+}
+
+

@@ -1,0 +1,24 @@
+.breadcrumb-item {
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0.045rem;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.breadcrumb-item.active {
+    color: gray;
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #333;
+}
+
+.bread-home {
+    font-weight: 600;
+}
+
+.breadcrumb-link:hover {
+    border-bottom: 1.5px solid #333;
+}

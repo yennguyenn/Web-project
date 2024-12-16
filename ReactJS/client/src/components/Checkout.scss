@@ -1,0 +1,241 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.nav-pills {
+    --bs-nav-pills-border-radius: 0;
+    --bs-nav-pills-link-active-color: #212529;
+    --bs-nav-pills-link-active-bg: #e9ecef;
+}
+
+.nav .nav-link {
+    color: #343a40;
+}
+
+.nav-pills.custom-nav {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.custom-nav .nav-item {
+    background: #f8f9fa;
+    align-self: stretch;
+}
+
+.nav-link {
+    transition: all 0.2s ease-out;
+}
+
+.custom-nav .nav-link {
+    position: relative;
+    height: 100%;
+    background: none;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #495057;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-nav .nav-link.active {
+    background: #495057;
+    color: #fff;
+}
+
+.custom-nav .nav-link.active::after {
+    display: none;
+}
+
+.custom-nav .nav-link::after {
+    content: "";
+    width: 0;
+    height: 50%;
+    background: #ddd;
+    display: inline-block;
+    position: absolute;
+    top: 25%;
+    right: 0;
+}
+
+.custom-nav .nav-link.disabled {
+    cursor: not-allowed !important;
+    background: #f8f9fa;
+    color: #999;
+}
+
+.block-header {
+    padding: 1.2rem 1.5rem;
+    background: #f8f9fa;
+    cursor: pointer;
+}
+
+.block-body {
+    padding: 1.2rem 1.5rem;
+}
+
+.btn-back:hover {
+    transform: translateX(-8px);
+}
+
+.btn-next {
+    width: 280px;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    line-height: 1.5;
+    --bs-btn-padding-y: 0.7rem;
+    --bs-btn-padding-x: 0.75rem;
+    --bs-btn-font-size: 0.75rem;
+}
+
+.collapse {
+    transition: height 0.35s ease; 
+}
+
+a.accordion-link {
+    color: #343a40;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.collapse:not(.show) {
+    display: none;
+}
+
+.notice {
+    font-size: 14px;
+    color: #999;
+    font-style: italic;
+    align-self: flex-end;
+}
+
+.haha {
+    border-right: 1px solid #495057;
+}
+
+.block-body .form-label {
+    color: #868e96;
+    font-size: 0.7875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.block-body .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.block-body .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #212529;
+}
+
+.block-body .form-check {
+    display: block;
+    min-height: 1.35rem;
+    padding-left: 1.5em;
+    margin-bottom: 0.125rem;
+}
+
+.block-body .form-check-input[type=checkbox] {
+    border: 1px solid #212529;
+}
+
+.block-body .form-check-input[type=checkbox]:checked{
+    background-color:#343a40;
+}
+
+.block-body .form-check .form-check-input {
+    float: left;
+    margin-left: -1.5em;
+}
+
+.form-check-input[type=checkbox]:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.cart-item-img {
+    width: 100px;
+    height: auto;
+}
+
+.cart-price {
+    font-size: 13px;
+    font-weight: 500;
+    color: #868e96;
+}
+
+.border-right {
+    border-right: 1px solid #ddd;
+}
+
+.info {
+    font-weight: 600;
+    color: #868e96;
+    font-size: 0.7875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.input-info {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
+    transition: none;
+}
+
+.input-image {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    transition: none;
+    background: transparent;
+}
+
+.input-info:disabled{
+    background-color: transparent;
+}
+
+.input-info:focus{
+    outline: none;
+    box-shadow: none;
+    border-color: #495057;
+}
+
+.input-radio[type=radio]:checked {
+    background-color:#343a40;
+}
+
+.accordion-button {
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.accordion-button:active {
+    background-color: #f8f9fa;
+}
+
+.accordion-button:not(.collapsed) {
+    color:  #f8f9fa;
+    background-color: transparent;
+    box-shadow: none;
+}

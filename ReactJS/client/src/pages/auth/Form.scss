@@ -1,0 +1,80 @@
+.gradient-custom {
+    &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../../public/Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .4;
+    z-index: -1;
+    }
+}
+
+p {
+    font-weight: 400;
+}
+
+.back-ground {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.13);
+    opacity: .7;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    z-index: 0;
+}
+
+.back-ground-2 {
+    z-index: 1;
+}
+
+.form-floating {
+    .input {
+    font-size: 0.8rem;
+    }
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.form-control {
+    border-color: #333;
+}
+
+.error-message {
+    color: red;
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 100;
+}
+
+.terms {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.forgot {
+    font-weight: 400;
+    color: gray;
+}
+
+.custom-button {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    color: black;
+    border-color: white;
+    border-radius: 10px;
+    font-size: medium;
+}
+
+
+  

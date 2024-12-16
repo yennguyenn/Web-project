@@ -1,0 +1,160 @@
+/* Item.css */
+
+.product-box {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.product-box:hover{
+    border: 1px solid #333;
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.product-action {
+    background: rgba(83, 81, 81, 0.5);
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    align-items: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.product-action a {
+    color: #f2f2f2;
+    text-decoration: none;
+    text-align: center;
+    width: 50%;
+    padding: 7px 0;
+}
+
+.product-action .i-cart{
+    font-size: larger;
+    border-right: 2px solid rgba(83, 81, 81, 0.7);
+}
+
+.product-action .i-cart:hover{
+    color: #231f1f;
+}
+
+.product-action .i-heart-favo {
+    color: #e83625;
+    font-size: larger;
+}
+
+.product-action .i-heart-favo:hover{
+    color: #f7f4f4;
+}
+
+.product-action .i-heart {
+    color: #f7f4f4;
+    font-size: larger;
+}
+
+.product-action .i-heart:hover {
+    color: #e83625;
+}
+
+.product-content a:hover{
+    color: #E4948D;
+}
+
+.product-box:hover .product-action{
+    bottom: 0;
+    opacity: 1;
+}
+
+.product-content {
+    text-align: center;
+    width: 100%;
+}
+
+.product-content a {
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    color: #333;
+    margin: 10px;
+}
+
+.product-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.product-title:hover {
+    overflow: visible;
+    white-space: wrap;
+}
+
+.product-content span {
+    color: gray;
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+}
+
+.product-price {
+  position: relative;
+}
+
+.cart-animation {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+}
+
+.product-promo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 2.5rem; /* Adjust the size as needed */
+    height: 2.5rem; /* Adjust the size as needed */
+    line-height: 2.5rem; /* Match line-height to the height for vertical centering */
+    text-align: center;
+    background: #4F944F;
+    border-radius: 0; /* Remove border-radius to make it square */
+    font-size: 0.87rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    z-index: 10;
+    border-bottom-left-radius: 45%;
+    border-top-right-radius: 5px;
+}
+
+.bg-red {
+    background-color: #E35D46 !important;
+}
+
+.arrow-right, .arrow-left {  
+    z-index: 2;
+    top: 10.7rem;
+    font-size: 50px;
+    border: none;
+    background-color: transparent;
+    opacity: 0;
+    color: gray;
+}
+
+.arrow-left {
+    left: 0;
+}
+
+.arrow-right {
+    right: 0;
+}
+
+.arrow-right:hover, .arrow-left:hover {
+    opacity: 0.9;
+}

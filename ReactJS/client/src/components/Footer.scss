@@ -1,0 +1,43 @@
+.heading-xxs {
+    font-size: 0.95rem;
+}
+
+.heading-xxxs {
+    font-size: 1.2rem;
+}
+
+.heading-xxs, .heading-xxxs {
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.underline, .alert a, .breadcrumb-item a, .dropdown .dropdown-menu .dropdown-item, .nav-actions .nav-link, .list-group-columns .list-group-item a, .list-group-minimal .list-group-item span a, .product-action > * {
+    position: relative;
+}
+
+a {
+    transition: all .1s ease-in-out;
+    transition-property: color;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+li {
+    display: list-item;
+    unicode-bidi: isolate;
+}
+
+.input:focus {
+    box-shadow: none;
+}
+
+.button:hover {
+    background: rgb(229, 223, 223);
+}
+
+.fs-xxs {
+    font-size: .8125rem !important;
+}

@@ -1,0 +1,140 @@
+.text-brown {
+    color: #333;
+    text-decoration: none;
+}
+
+.navbar{
+    border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.menu .navbar-nav .nav-item :hover {
+    color: black;
+    text-decoration: none;
+}
+
+.menu .dropdown-item :hover {
+    color: black; 
+    text-decoration: none;
+}
+
+.nav-item:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: relative;
+    top: 26px;
+    left: 0;
+    z-index: 1000;
+}
+
+.cart-count {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-count .badge {
+    position: absolute;
+    top: -9px;
+    right: -4px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    width: 20px;
+    height: 20px;
+    /* padding: 2px 6px; */
+    font-size: 7px;
+}
+
+.badge span {
+    position: relative;
+    top: 0.5px;
+}
+
+.menu {
+    height: 81px;
+    width: 100%;
+}
+
+.logo {
+    max-height: 48px;
+    width: auto;
+}
+
+.space {
+    width: 98px;
+}
+
+.spacex{
+    width: 30px;
+}
+
+.menu .nav-item a {
+    position: relative;
+    text-decoration: none;
+}
+
+.menu .nav-item a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    background: #333;
+    transition: width .3s  ease-in-out;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu .nav-item a:hover::after {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}
+
+.nav-icon .icon-nav {
+    color: #686D76;
+    transform: color 3s ease;
+}
+
+.nav-icon .icon-nav:hover {
+    color: #333;
+}
+
+.nav-icon.dropdown {
+    position: relative;
+}
+
+.nav-icon .dropdown-menu {
+    position: absolute;
+    top: 30px;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.nav-button button{
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-button{
+    display: flex;
+}
+
+.dropdown-menu:active {
+    --bs-dropdown-link-active-bg: tranparent;
+}

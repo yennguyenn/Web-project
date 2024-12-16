@@ -1,0 +1,32 @@
+
+.topic {
+    background-color: #f8f9fa;
+}
+
+.list-group-borderless .list-group-item {
+    border: 0;
+    border-radius: 0.5rem !important;
+}
+
+.list-group-borderless .list-group-item:hover { 
+    background-color: #f8f9fa;
+}
+
+.list-group-borderless {
+    border-radius: 0;
+    gap: 0.1875rem;
+}
+
+.offcanvas-lg .offcanvas-body {
+    background-color: transparent;
+    display: flex;
+    flex-grow: 0;
+    overflow-y: visible;
+    padding: 0;
+}
+
+.list-group-item-action {
+    color: #333d4c;
+    font-weight: 500;
+    transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out;
+}

@@ -1,0 +1,45 @@
+.search-box{
+    background-color: transparent;
+    padding: 0 3px 0 3px;
+    position: relative;
+    margin-right: 5px;
+}
+.search-box:hover{
+    border: solid 1px;
+    border-radius: 32px;
+    transition: ease;
+    background-color: #fff;
+}
+.search-box input{
+    width: 0px;
+    transition: 1s ease;
+    font-size: 16px;
+    border: transparent;
+    background-color: transparent;
+    outline: none;
+}
+
+.search-box:hover input{
+    width: 150px;
+
+}
+.search-box button {
+    padding: 5px 5px 5px 2px;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-icon {
+    color: #686D76;
+}
+
+.search-box{
+    &:hover {
+        .search-icon:hover {
+            color: #333;
+        }
+    }
+}

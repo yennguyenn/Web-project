@@ -1,0 +1,50 @@
+.table th,
+.table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.badge {
+    &.badge-pending-confirm {
+        background-color: #ffe5b4; 
+        color: #d69d2b;
+    }
+    &.badge-pending-pickup {
+        background-color: #cce5ff; 
+        color: #5a9bd4;
+    }
+    &.badge-pending-delivery {
+        background-color: #ffe5b4; 
+        color: #d69d2b;
+    }
+    &.badge-delivered {
+        background-color: #d4edda; 
+        color: #6c8e76;
+    }
+    &.badge-canceled {
+        background-color: #e2e3e5; 
+        color: #a0a4ab;
+    }
+    &.badge-other {
+        background-color: #6c757d; // grey
+        color: #fff;
+    }
+}
+
+.table-head th {
+    font-weight: 500;
+    letter-spacing: 0.13rem;
+    cursor: default;
+}
+
+.order-bold {
+    font-weight: 500;
+}
+
+.select-form:focus {
+    box-shadow: none;
+    border: 1px solid #333;
+}
+
+
+
