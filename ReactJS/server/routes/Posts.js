@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router();
-const { Customers } = require('../models');
+const { Posts } = require('../models');
 
- router.get("/",(req,res) => {
-    res.send("Hello world");
+ router.get("/",async(req,res) => {
+   const listOfPosts = await Posts.findAll();
+    res.json(listOfPosts);
  });
 
 router.post("/", async (req,res) => {
@@ -11,4 +12,5 @@ router.post("/", async (req,res) => {
    await Customer.create(post);
    res.json(post);
 });
+
 module.exports = router;
