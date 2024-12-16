@@ -20,11 +20,11 @@ let createNewUser = (data) => {
             })
 
             //check exit user information
-            let isExit = await findUserByEmail(data.email)
+            let isExit = await getUserByEmail(data.email)
             console.log(isExit);
 
-            if (await findUserByEmail(data.email)) {
-                console.log(findUserByEmail(data.email));
+            if (await getUserByEmail(data.email)) {
+                console.log(getUserByEmail(data.email));
 
                 resolve({
                     errCode: 1,
@@ -60,14 +60,16 @@ let createNewUser = (data) => {
 
 }
 
+// handle Login API
 let handleLogin = (email, password) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let user = await findUserByEmail(email)
+            let user = await getUserByEmail(email)
             let userData = {}
             if (user) {
                 if( bcryptjs.compareSync(password,user.password)){
                     userData.errCode = 0 ,
+                    delete user.password
                     userData.errMessage = 'OK',
                     userData.user = user
                 }else{
@@ -121,11 +123,14 @@ let comparePassword = (password)=>{
     })
 }
 
-let findUserByEmail = (email) => {
+let getUserByEmail = (email) => {
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
                 where: { email: email },
+                attributes: {
+                    include: ['email','roleId'],
+                },  
                 raw: true,
             })
             console.log(user);
