@@ -4,8 +4,8 @@ import { handleRegisterApi, handleLoginApi } from '../../services/userService'
 import './Form.scss'
 
 const Register = () => {
-    const [firstname, setFirstname] = useState('')
-    const [lastname, setLastname] = useState('')
+    const [firstName, setFirstName] = useState('')  // Changed from firstname to firstName
+    const [lastName, setLastName] = useState('')    // Changed from lastname to lastName
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confPass, setConfPass] = useState('')
@@ -27,7 +27,7 @@ const Register = () => {
     const handleRegister = async (event) => {
         event.preventDefault()
 
-        if (firstname.trim() === '' || lastname.trim() === '') {
+        if (firstName.trim() === '' || lastName.trim() === '') {
             setFullnameValid(false)
             setErrFullname('Please enter your name')
             return
@@ -70,8 +70,8 @@ const Register = () => {
         }
 
         const userData = {
-            firstname,
-            lastname,
+            firstName,  // Use firstName here
+            lastName,   // Use lastName here
             email,
             password,
         }
@@ -87,7 +87,6 @@ const Register = () => {
                     alert(response.errMessage)
                 }
             } else {
-                // Handle error response (e.g., duplicate email or other issues)
                 alert(response.errMessage)
             }
         } catch (error) {
@@ -100,10 +99,10 @@ const Register = () => {
         const { name, value } = event.target
 
         switch (name) {
-            case 'firstname':
-            case 'lastname':
-                if (name === 'firstname') setFirstname(value)
-                if (name === 'lastname') setLastname(value)
+            case 'firstName':  // Use firstName here
+            case 'lastName':   // Use lastName here
+                if (name === 'firstName') setFirstName(value)  // Changed from setFirstname
+                if (name === 'lastName') setLastName(value)    // Changed from setLastname
                 setFullnameValid(true)
                 setErrFullname('')
                 break
@@ -150,14 +149,14 @@ const Register = () => {
                                                 <div className="form-floating">
                                                     <input 
                                                         type="text" 
-                                                        id="typeFirstname" 
-                                                        name="firstname" 
+                                                        id="typeFirstName" 
+                                                        name="firstName"  // Use firstName here
                                                         placeholder="First name" 
                                                         className={`form-control form-control-lg input ${(!fullnameValid ? 'is-invalid' : '')}`}
-                                                        value={firstname} 
+                                                        value={firstName}  // Use firstName here
                                                         onChange={handleOnChangeInput} 
                                                     />
-                                                    <label htmlFor="typeFirstname">First name</label>
+                                                    <label htmlFor="typeFirstName">First name</label>
                                                 </div>
                                             </div>
 
@@ -165,14 +164,14 @@ const Register = () => {
                                                 <div className='form-floating'>
                                                     <input 
                                                         type="text" 
-                                                        id="typeLastname" 
-                                                        name="lastname" 
+                                                        id="typeLastName" 
+                                                        name="lastName"  // Use lastName here
                                                         placeholder="Last name" 
                                                         className={`form-control form-control-lg input ${(!fullnameValid ? 'is-invalid' : '')}`}
-                                                        value={lastname} 
+                                                        value={lastName}  // Use lastName here
                                                         onChange={handleOnChangeInput} 
                                                     />
-                                                    <label htmlFor="typeLastname">Last name</label>
+                                                    <label htmlFor="typeLastName">Last name</label>
                                                 </div>
                                             </div>
                                             <div className="error-message">
@@ -227,7 +226,7 @@ const Register = () => {
                                                 {errConfPass}
                                             </div>
                                         </div>
-                                        
+                                      
                                         <div className="mb-4">
                                             <input 
                                                 type='checkbox' 
@@ -238,7 +237,7 @@ const Register = () => {
                                                 I agree to the <u className='fw-bold'>Terms & Conditions</u>
                                             </label>
                                         </div>
-                                        
+                                      
                                         <div className="d-flex justify-content-center align-items-center pt-2">
                                             <button className="btn btn-outline-light btn-lg px-5 text-center" type="submit">Register</button>
                                         </div>                                       
