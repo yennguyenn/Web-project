@@ -8,6 +8,8 @@ import { BsClock, BsTruck } from 'react-icons/bs'
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
 import { LuCheckCircle, LuChevronRight, LuCornerDownRight, LuPackageX, LuPenLine } from 'react-icons/lu'
+import { LuCircleCheck } from 'react-icons/lu';
+
 
 import { CartContext } from '../context/CartContext'
 import { handleUserAddLargeItem } from '../services/cartService'
