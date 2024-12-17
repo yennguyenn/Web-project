@@ -90,6 +90,22 @@ let handleLogin = (email, password) => {
     })
 }
 
+let deleteUser = (userId) =>{
+    return new Promise(async (resolve,reject)=>{
+        try {
+            
+        } catch (e ) {
+            reject(e)
+        }
+    })
+}
+
+let updateUser = (userData) =>{
+    
+}
+
+// suport method 
+
 let getUserById = (id)=>{
     return new Promise(async(resolve,reject) => {
         try {
@@ -100,17 +116,13 @@ let getUserById = (id)=>{
                 where:{userId : id},
                 raw:true
             })
-            if(user) resolve(user)
-            else
-                resolve("can not find user id = " + id )
+            resolve(user)
         } catch (error) {
             reject(error)
         }
         
     })
 }
-
-// suport method 
 
 let comparePassword = (password)=>{
     return new Promise( async(resolve,reject) =>{

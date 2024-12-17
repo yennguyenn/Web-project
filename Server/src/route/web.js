@@ -19,6 +19,11 @@ let initWebRouters = (app)=>{
     router.post('/api/createNewUser',userControllers.postCreateNewuser)
     router.post('/api/login',userControllers.handleLogin)
 
+
+    //delete API
+    router.delete('/api/deleteUser',userControllers.handleDeleteUser)
+    //put API
+    router.put('/api/updateUser',userControllers.handleUpdateUser)
     return app.use("/",router)
 }
 

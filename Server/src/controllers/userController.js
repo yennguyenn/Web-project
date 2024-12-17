@@ -29,6 +29,18 @@ let handleLogin = async(req,res)=>{
     })
 }
 
+let handleDeleteUser = async (req,res) =>{
+    console.log("run handleDeleteUser in userController");
+    let message = await userService.deleteUser(req.body.userId)
+    return res.send(message)
+}
+
+let handleUpdateUser = async (req,res) =>{
+    console.log("run handleUpdate in userController");
+    let message = await userService.updateUser(req.body)
+    return res.send(message)
+}
+
 let getUserById = async(req,res)=>{
     console.log(req.query.id);
     
@@ -40,4 +52,6 @@ module.exports = {
     postCreateNewuser:postCreateNewuser,
     handleLogin:handleLogin,
     getUserById : getUserById,
+    handleDeleteUser : handleDeleteUser,
+    handleUpdateUser : handleUpdateUser,
 }
