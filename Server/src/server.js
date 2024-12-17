@@ -3,6 +3,7 @@ import bodyParser from "body-parser"
 import viewEngine from "./config/viewEngine"
 import initWebRouters from "./route/web"
 import connectDB from "./config/connectDB"
+const cors = require('cors')
 require("dotenv").config()
 let app = express()
 
@@ -10,7 +11,7 @@ let app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended : true}))
-
+app.use(cors())
 viewEngine(app)
 initWebRouters(app)
 
