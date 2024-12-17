@@ -93,6 +93,27 @@ let handleLogin = (email, password) => {
 let deleteUser = (userId) =>{
     return new Promise(async (resolve,reject)=>{
         try {
+            console.log("run deleteUser in userService");
+            let user = await getUserById(userId)
+
+            if(!user) resolve({
+                errCode : 2,
+                errMessage: "user does not exist"
+            })
+
+            let isSuccesss =  await db.User.destroy({
+                where:{userId : userId} 
+            })
+
+            if(isSuccesss) resolve({
+                errCode:0,
+                messagse: "delete success"
+            })
+            else
+                resolve({
+                    error:2,
+                    errMessage:"delete fail"
+                })
             
         } catch (e ) {
             reject(e)
@@ -101,7 +122,7 @@ let deleteUser = (userId) =>{
 }
 
 let updateUser = (userData) =>{
-    
+
 }
 
 // suport method 
@@ -182,5 +203,7 @@ let hashUserPassword = (password) => {
 module.exports = {
     createNewUser: createNewUser,
     handleLogin: handleLogin,
-    getUserById:getUserById
+    getUserById:getUserById,
+    deleteUser : deleteUser,
+    updateUser : updateUser,
 }
