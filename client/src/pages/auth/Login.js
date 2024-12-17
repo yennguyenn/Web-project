@@ -5,23 +5,17 @@ import { handleLoginApi } from '../../services/userService'
 import './Form.scss'
 
 const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState('') // Removed username state
     const [showPassword, setShowPassword] = useState(false)
-    const [isValid, setIsValid] = useState(true)
     const [isValidP, setIsValidP] = useState(true)
-    const [errUsername, setErrUsername] = useState('')
     const [errPassword, setErrPassword] = useState('')
 
     const { login } = useContext(AuthContext)
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        if (username.trim() === '') {
-            setIsValid(false)
-            setErrUsername('Username is required')
-            return
-        }
+
+        // Only validate password now
         if (password.trim() === '') {
             setIsValidP(false)
             setErrPassword('Password is required')
@@ -29,7 +23,7 @@ const Login = () => {
         }
         
         try {
-            const response = await handleLoginApi(username, password)
+            const response = await handleLoginApi(password)  // Changed to only send password
             console.log("API response:", response)
 
             if (response.errCode === 0) {
@@ -41,9 +35,6 @@ const Login = () => {
                 } else {
                     throw new Error('Invalid response: missing token or user')
                 }
-            } else if (response.errCode === 1) {
-                setIsValid(false)
-                setErrUsername(response.errMessage)
             } else if (response.errCode === 3) {
                 setIsValidP(false)
                 setErrPassword(response.errMessage)
@@ -58,13 +49,7 @@ const Login = () => {
 
     const handleOnChangeInput = (event) => {
         const { name, value } = event.target
-        if (name === 'username') {
-            setUsername(value)
-            if (value.trim() !== '') {
-                setIsValid(true)
-                setErrUsername('')
-            }
-        } else if (name === 'password') {
+        if (name === 'password') {
             setPassword(value)
             if (value.trim() !== '') {
                 setIsValidP(true)
@@ -89,21 +74,7 @@ const Login = () => {
                                     <p className="text-white-50 mb-5 text-center">Please enter your account and password!</p>
 
                                     <form onSubmit={handleLogin}>
-                                        <div className="form-floating mb-4">
-                                            <input 
-                                            type="text" 
-                                            id="typeUsername" 
-                                            name="username" 
-                                            placeholder="Username" 
-                                            className={`form-control form-control-lg input ${!isValid ? 'is-invalid' : ''}`}
-                                            value={username} 
-                                            onChange={handleOnChangeInput}
-                                            />
-                                            <label htmlFor="typeUsername">Username</label>
-                                            <div className="error-message">
-                                                {errUsername}
-                                            </div>
-                                        </div>
+                                        {/* Removed username field */}
 
                                         <div className="form-floating mb-4 position-relative">
                                             <input 
@@ -128,10 +99,9 @@ const Login = () => {
                                         </div>
 
                                         <div className="d-flex justify-content-end mb-4">
-                                            <Link to ="/reset-password"className="small mb-2 pb-lg-2 forgot">Forgot password?</Link>
+                                            <Link to="/reset-password" className="small mb-2 pb-lg-2 forgot">Forgot password?</Link>
                                         </div>
-                                        
-                                        
+
                                         <div className="d-flex justify-content-center align-items-center">
                                             <button className="btn btn-outline-light btn-lg px-5 text-center" type="submit">Login</button>
                                         </div>
@@ -156,4 +126,4 @@ const Login = () => {
     )
 }
 
-export default (Login)
+export default Login
