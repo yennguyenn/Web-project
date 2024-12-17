@@ -5,9 +5,11 @@ import { handleLoginApi } from '../../services/userService'
 import './Form.scss'
 
 const Login = () => {
-    const [password, setPassword] = useState('') // Removed username state
+    const [email, setEmail] = useState('') // Changed to email
+    const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [isValidP, setIsValidP] = useState(true)
+    const [errEmail, setErrEmail] = useState('') // Added email error state
     const [errPassword, setErrPassword] = useState('')
 
     const { login } = useContext(AuthContext)
@@ -15,15 +17,20 @@ const Login = () => {
     const handleLogin = async (event) => {
         event.preventDefault()
 
-        // Only validate password now
+        // Validate email and password
+        if (email.trim() === '') {
+            setErrEmail('Email is required')
+            return
+        }
+
         if (password.trim() === '') {
             setIsValidP(false)
             setErrPassword('Password is required')
             return
         }
-        
+
         try {
-            const response = await handleLoginApi(password)  // Changed to only send password
+            const response = await handleLoginApi(email, password)  // Changed to send email and password
             console.log("API response:", response)
 
             if (response.errCode === 0) {
@@ -45,11 +52,15 @@ const Login = () => {
             console.error('Login error:', error)
         }
     }
-    
 
     const handleOnChangeInput = (event) => {
         const { name, value } = event.target
-        if (name === 'password') {
+        if (name === 'email') {
+            setEmail(value)
+            if (value.trim() !== '') {
+                setErrEmail('')
+            }
+        } else if (name === 'password') {
             setPassword(value)
             if (value.trim() !== '') {
                 setIsValidP(true)
@@ -61,7 +72,7 @@ const Login = () => {
     const handleShowPassword = () => {
         setShowPassword(!showPassword)
     }
-    
+
     return (
         <section className="vh-100 gradient-custom">
             <div className="container py-5 h-100">
@@ -71,27 +82,43 @@ const Login = () => {
                             <div className="card-body px-5 py-4">
                                 <div className="mb-md-5 mt-md-4">
                                     <h2 className="fw-bold mb-2 text-uppercase text-center text-white">Login</h2>
-                                    <p className="text-white-50 mb-5 text-center">Please enter your account and password!</p>
+                                    <p className="text-white-50 mb-5 text-center">Please enter your email and password!</p>
 
                                     <form onSubmit={handleLogin}>
-                                        {/* Removed username field */}
+                                        {/* Email field */}
+                                        <div className="form-floating mb-4">
+                                            <input 
+                                                type="email" 
+                                                id="typeEmail" 
+                                                name="email" 
+                                                placeholder="Email" 
+                                                className="form-control form-control-lg input"
+                                                value={email} 
+                                                onChange={handleOnChangeInput}
+                                            />
+                                            <label htmlFor="typeEmail">Email</label>
+                                            <div className="error-message">
+                                                {errEmail}
+                                            </div>
+                                        </div>
 
+                                        {/* Password field */}
                                         <div className="form-floating mb-4 position-relative">
                                             <input 
-                                            type={showPassword ? "text" : "password"} 
-                                            id="typePassword" 
-                                            name="password" 
-                                            placeholder="Password" 
-                                            className="form-control form-control-lg input" 
-                                            style={{borderColor: (isValidP ? '' : 'red')}}
-                                            value={password} 
-                                            onChange={handleOnChangeInput}
+                                                type={showPassword ? "text" : "password"} 
+                                                id="typePassword" 
+                                                name="password" 
+                                                placeholder="Password" 
+                                                className="form-control form-control-lg input" 
+                                                style={{borderColor: (isValidP ? '' : 'red')}}
+                                                value={password} 
+                                                onChange={handleOnChangeInput}
                                             />
                                             <label htmlFor="typePassword">Password</label>
                                             <i
-                                            className={"fa " + (showPassword ? "fa-eye" : "fa-eye-slash") + " position-absolute"}
-                                            style={{ top: '23px', right: '10px', cursor: 'pointer', opacity: '0.7'}}
-                                            onClick={handleShowPassword}
+                                                className={"fa " + (showPassword ? "fa-eye" : "fa-eye-slash") + " position-absolute"}
+                                                style={{ top: '23px', right: '10px', cursor: 'pointer', opacity: '0.7'}}
+                                                onClick={handleShowPassword}
                                             ></i>
                                             <div className="error-message">
                                                 {errPassword}
@@ -108,9 +135,9 @@ const Login = () => {
                                     </form>
 
                                     <div className="d-flex justify-content-center text-center mt-4 pt-1">
-                                    <a href="#!" className="text-white"><i className="fab fa-facebook-f fa-lg"></i></a>
-                                    <a href="#!" className="text-white"><i className="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                    <a href="#!" className="text-white"><i className="fab fa-google fa-lg"></i></a>
+                                        <a href="#!" className="text-white"><i className="fab fa-facebook-f fa-lg"></i></a>
+                                        <a href="#!" className="text-white"><i className="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                        <a href="#!" className="text-white"><i className="fab fa-google fa-lg"></i></a>
                                     </div> 
                                 </div>
 

@@ -5,19 +5,16 @@ import { handleGetVerifyCode, handleResetPassword, handleCheckVerifyCode } from 
 import './Form.scss'
 
 const ForgotPassword = () => {
-    const [username, setUsername] = useState('') 
     const [email, setEmail] = useState('') 
     const [code, setCode] = useState('') 
     const [password, setPassword] = useState('') 
     const [confPass, setConfPass] = useState('') 
 
-    const [usernameValid, setUsernameValid] = useState(true) 
     const [emailValid, setEmailValid] = useState(true) 
     const [codeValid, setCodeValid] = useState(true) 
     const [passwordValid, setPasswordValid] = useState(true) 
     const [confPassValid, setConfPassValid] = useState(true) 
 
-    const [errUsername, setErrUsername] = useState('') 
     const [errEmail, setErrEmail] = useState('') 
     const [errCode, setErrCode] = useState('') 
     const [errPassword, setErrPassword] = useState('') 
@@ -29,12 +26,6 @@ const ForgotPassword = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault() 
-
-        if (username.trim() === '') {
-            setUsernameValid(false);
-            setErrUsername('Please enter your username');
-            return;
-        }
 
         if (email.trim() === '') {
             setEmailValid(false);
@@ -62,7 +53,7 @@ const ForgotPassword = () => {
         }
 
         try {
-            const response = await handleResetPassword(username, code, password)
+            const response = await handleResetPassword(email, code, password)
             if (response.errCode !== 0) {
                 setCodeValid(false)
                 setErrCode(response.errMessage)
@@ -86,7 +77,7 @@ const ForgotPassword = () => {
         }
 
         try {
-            let response = await handleCheckVerifyCode(username, code)
+            let response = await handleCheckVerifyCode(email, code)
             console.log(response)
             if (response.errCode !== 0) {
                 setCodeValid(false)
@@ -104,11 +95,6 @@ const ForgotPassword = () => {
         const { name, value } = event.target 
 
         switch (name) {
-            case 'username':
-                setUsername(value) 
-                setUsernameValid(true) 
-                setErrUsername('') 
-                break 
             case 'email':
                 setEmail(value) 
                 setEmailValid(true) 
@@ -135,34 +121,24 @@ const ForgotPassword = () => {
     } 
 
     const handleSendCode = async () => {
-        if (username.trim() === '') {
-            setUsernameValid(false) 
-            setErrUsername('Please enter your username') 
-            return 
-        }
-
         if (email.trim() === '') {
             setEmailValid(false) 
             setErrEmail('Please enter your email') 
             return 
         }
 
-        if (username === '' || email === '') {
+        if (email === '') {
             setShowModal(false);
             return
         }
-        if (!usernameValid || !emailValid) {
+        if (!emailValid) {
             setShowModal(false);
             return
         }
 
         try {
-            let response = await handleGetVerifyCode(username, email)
-            if (response && response.errCode === 1) {
-                setUsernameValid(false);
-                setErrUsername(response.errMessage);
-                setShowModal(false) 
-            } else if (response && response.errCode === 2) {
+            let response = await handleGetVerifyCode(email)
+            if (response && response.errCode === 2) {
                 setEmailValid(false);
                 setErrEmail(response.errMessage);
                 setShowModal(false) 
@@ -187,21 +163,6 @@ const ForgotPassword = () => {
                                 <div className="mb-md-5 mt-md-4 forgot">
                                     <h2 className="fw-bold mb-5 text-uppercase text-center text-white">Forgot Password</h2>            
                                     <form onSubmit={handleSubmit}>
-                                        <div className="form-floating mb-4">
-                                            <input 
-                                                type="text" 
-                                                id="typeUsername" 
-                                                name="username" 
-                                                placeholder="Username" 
-                                                className={`form-control form-control-lg input ${!usernameValid ? 'is-invalid' : ''}`}
-                                                value={username} 
-                                                onChange={handleOnChangeInput}
-                                            />
-                                            <label htmlFor="typeUsername">Username</label>
-                                            <div className="error-message">
-                                                {errUsername}
-                                            </div>
-                                        </div>
                                         <div className="d-flex mb-3 align-items-center">
                                             <div className="flex-grow-1 form-floating">
                                                 <input 
@@ -213,7 +174,7 @@ const ForgotPassword = () => {
                                                     value={email} 
                                                     onChange={handleOnChangeInput}
                                                 />
-                                                <label htmlFor="typeUsername">Email</label>
+                                                <label htmlFor="typeEmail">Email</label>
                                                 <div className="error-message">
                                                     {errEmail}
                                                 </div>
@@ -238,7 +199,7 @@ const ForgotPassword = () => {
                                                 className={`form-control form-control-lg input ${(!passwordValid ? 'is-invalid' : '')}`}
                                                 onChange={handleOnChangeInput} 
                                             />
-                                            <label htmlFor="typePpassword">Password</label>
+                                            <label htmlFor="typePassword">Password</label>
                                             <div className="error-message">
                                                 {errPassword}
                                             </div>
@@ -305,4 +266,4 @@ const ForgotPassword = () => {
     )
 }
 
-export default ForgotPassword 
+export default ForgotPassword
