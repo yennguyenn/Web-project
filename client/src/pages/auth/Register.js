@@ -4,7 +4,6 @@ import { handleRegisterApi, handleLoginApi } from '../../services/userService'
 import './Form.scss'
 
 const Register = () => {
-    const [username, setUsername] = useState('')
     const [firstname, setFirstname] = useState('')
     const [lastname, setLastname] = useState('')
     const [email, setEmail] = useState('')
@@ -12,14 +11,12 @@ const Register = () => {
     const [confPass, setConfPass] = useState('')
     const [agreeTerms, setAgreeTerms] = useState(false)
 
-    const [usernameValid, setUsernameValid] = useState(true)
     const [emailValid, setEmailValid] = useState(true)
     const [fullnameValid, setFullnameValid] = useState(true)
     const [passwordValid, setPasswordValid] = useState(true)
     const [confPassValid, setConfPassValid] = useState(true)
     const [termValid, setTermValid] = useState(true)
 
-    const [errUsername, setErrUsername] = useState('')
     const [errFullname, setErrFullname] = useState('')
     const [errEmail, setErrEmail] = useState('')
     const [errPassword, setErrPassword] = useState('')
@@ -29,12 +26,6 @@ const Register = () => {
     
     const handleRegister = async (event) => {
         event.preventDefault()
-
-        if (username.trim() === '') {
-            setUsernameValid(false)
-            setErrUsername('Please enter your username')
-            return
-        }
 
         if (firstname.trim() === '' || lastname.trim() === '') {
             setFullnameValid(false)
@@ -79,7 +70,6 @@ const Register = () => {
         }
 
         const userData = {
-            username,
             firstname,
             lastname,
             email,
@@ -88,23 +78,21 @@ const Register = () => {
 
         try {
             let response = await handleRegisterApi(userData)
-            console.log(response)
-            
-            if (response && response.errCode === 1) {
-                setUsernameValid(false)
-                setErrUsername(response.errMessage)
-            } else if (response && response.errCode === 0) {
-                let loginResponse = await handleLoginApi(username, password)
-                console.log(loginResponse)
+            if (response && response.errCode === 0) {
+                const loginResponse = await handleLoginApi(email, password)
                 if (loginResponse && loginResponse.errCode === 0) {
-                    const { token, user } = loginResponse;
+                    const { token, user } = loginResponse
                     login(token, user)
                     window.history.back()
                     alert(response.errMessage)
                 }
+            } else {
+                // Handle error response (e.g., duplicate email or other issues)
+                alert(response.errMessage)
             }
         } catch (error) {
             console.error(error)
+            alert('An error occurred. Please try again later.')
         }
     }
 
@@ -112,11 +100,6 @@ const Register = () => {
         const { name, value } = event.target
 
         switch (name) {
-            case 'username':
-                setUsername(value)
-                setUsernameValid(true)
-                setErrUsername('')
-                break
             case 'firstname':
             case 'lastname':
                 if (name === 'firstname') setFirstname(value)
@@ -161,21 +144,6 @@ const Register = () => {
                                     <p className="text-white-50 mb-4 text-center">Please enter your details to register!</p>
 
                                     <form onSubmit={handleRegister}>
-                                        <div className="form-floating mb-3">
-                                            <input 
-                                                type="text" 
-                                                id="typeUsername" 
-                                                name="username" 
-                                                placeholder="Username" 
-                                                className={`form-control form-control-lg input ${(!usernameValid ? 'is-invalid' : '')}`}
-                                                value={username} 
-                                                onChange={handleOnChangeInput}
-                                            />
-                                            <label htmlFor="typeUsername">Username</label>
-                                            <div className="error-message">
-                                                {errUsername}
-                                            </div>
-                                        </div>
 
                                         <div className="row position-relative mb-3">
                                             <div className='col-md-6'>
