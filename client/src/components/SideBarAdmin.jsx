@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { LuBarChart2, LuBell, LuBox, LuClipboardCheck, LuClipboardList, LuCreditCard, LuHeart, LuLogOut, LuMapPin, LuShoppingBag, LuTag, LuUser } from 'react-icons/lu';
+import { LuBell, LuBox, LuClipboardCheck, LuClipboardList, LuCreditCard, LuHeart, LuLogOut, LuMapPin, LuShoppingBag, LuTag, LuUser } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import './SideBarAdmin.scss'
+import { LuChartBar } from 'react-icons/lu';
 
 const SideBarAdmin = () => {
     const { logout } = useContext(AuthContext);

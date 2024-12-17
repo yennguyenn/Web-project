@@ -7,8 +7,9 @@ import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
 import { BsClock, BsTruck } from 'react-icons/bs'
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
-import { LuCheckCircle, LuChevronRight, LuCornerDownRight, LuPackageX, LuPenLine } from 'react-icons/lu'
-import { LuCircleCheck } from 'react-icons/lu';
+// import { LuCheckCircle, LuChevronRight, LuCornerDownRight, LuPackageX, LuPenLine } from 'react-icons/lu'
+// import { LuCircleCheck } from 'react-icons/lu';
+import { FaCheckCircle } from 'react-icons/fa';
 
 
 import { CartContext } from '../context/CartContext'
