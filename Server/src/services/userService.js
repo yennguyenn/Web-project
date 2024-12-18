@@ -74,7 +74,7 @@ let handleLogin = (email, password) => {
                     let token =  await JwtAction.createJWT({
                         email : email,
                         roleId : user.roleId,
-                        exp:3600,
+                        exp:Date.now() + 3600,
                     })
                     userData.errCode = 0,
                     delete user.password

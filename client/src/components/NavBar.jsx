@@ -56,7 +56,7 @@ const NavBar = () => {
               </div>
               <div className='dropdown-toggle' role='button' data-bs-toggle='dropdown' aria-expanded='false'></div>
               <ul className='dropdown-menu'>
-                <li className='dropdown-item'><Link to='/product/product/ring' className='text-brown'>Ring</Link></li>
+                <li className='dropdown-item'><Link to='/product/product/rings' className='text-brown'>Ring</Link></li>
                 <li className='dropdown-item'><Link to='/product/product/necklaces' className='text-brown'>Necklaces</Link></li>
                 <li className='dropdown-item'><Link to='/product/product/earrings' className='text-brown'>Earrings</Link></li>
                 <li className='dropdown-item'><Link to='/product/product/bracelets' className='text-brown'>Bracelets</Link></li>
@@ -64,16 +64,16 @@ const NavBar = () => {
                 <li className='dropdown-item'><Link to='/product/product/other' className='text-brown'>Other</Link></li>
               </ul>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <div className='text-black mx-3'>
                 <Link to='/product/material' className='text-brown'>MATERIAL</Link>
               </div>
-            </li>
-            <li className='nav-item'>
+            </li> */}
+            {/* <li className='nav-item'>
               <div className='text-black mx-3'>
                 <Link to='/product/gifts' className='text-brown'>GIFTS</Link>
-              </div>
-            </li>
+              </div> */
+            /* </li> */}
           </ul>
           <div className='w-400'>
             {isAuthenticated.token ? (
