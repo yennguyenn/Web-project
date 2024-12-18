@@ -37,7 +37,8 @@ const ProductInfo = () => {
         1: 'ring',
         2: 'necklaces',
         3: 'bracelets',
-        7: 'other'
+        4: 'watches',
+        5: 'other'
     }
 
     const capitalizeFirstLetter = (string) => {

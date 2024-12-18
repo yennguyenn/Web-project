@@ -6,20 +6,18 @@ import NavBar from '../components/NavBar'
 import './ProductPage.scss'
 
 const categoryMap = {
-    wool: 1,
+    jewelry: 1,
     product: 2,
     material: 3,
-    tool: 4
+    gift: 4
 }
 
 const subcategoryMap = {
-    animal: 1,
-    plant: 2,
-    food: 3,
-    cloth: 4,
-    accessory: 5,
-    mochi: 6,
-    other: 7
+    ring: 1,
+    necklaces: 2,
+    bracelets: 3,
+    watches: 4,
+    other: 5
 }
 
 const capitalizeFirstLetter = (string) => {
