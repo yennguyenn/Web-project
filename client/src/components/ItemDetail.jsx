@@ -7,9 +7,9 @@ import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
 import { BsClock, BsTruck } from 'react-icons/bs'
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
-// import { LuCheckCircle, LuChevronRight, LuCornerDownRight, LuPackageX, LuPenLine } from 'react-icons/lu'
-// import { LuCircleCheck } from 'react-icons/lu';
-import { FaCheckCircle } from 'react-icons/fa';
+import { LuCircleCheck , LuPackageX, LuPenLine, LuCornerDownRight, LuChevronRight } from 'react-icons/lu';
+// import { LuCircleCheck } from 'lucide-react'
+// import { FaCheckCircle } from 'react-icons/fa'
 
 
 import { CartContext } from '../context/CartContext'
@@ -223,7 +223,7 @@ const ItemDetail = () => {
                             {product.InStock !== 0 ? (
                                 <>
                                     <span className='d-flex align-items-center text-success fs-sm ms-auto me-3'>
-                                        <LuCheckCircle  className='me-1'/> Available to order
+                                        <LuCircleCheck  className='me-1'/> Available to order
                                     </span>
                                 </>
                             ) : (
