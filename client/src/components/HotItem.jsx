@@ -123,6 +123,7 @@ const HotItem = () => {
 
     // Tự động tạo đường dẫn hình ảnh dựa trên ProductID
     const getImagePath = (productId) => {
+        console.log(`ProductID: `)
         return `/images/product${productId}.png`;  // Hình ảnh sẽ có tên theo format product1.png, product2.png, ...
     }
 
