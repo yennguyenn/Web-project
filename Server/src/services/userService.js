@@ -1,13 +1,13 @@
 import bcryptjs from "bcryptjs"
 import db from "../models"
 import { where } from "sequelize"
+import JwtAction from "../middleware/JWTaction"
 //import User from "../models/user"
 const salt = bcryptjs.genSaltSync(10)
 
 let createNewUser = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log(data);
 
             //check null data
             if (!data.email) resolve({
@@ -21,7 +21,6 @@ let createNewUser = (data) => {
 
             //check exit user information
             let isExit = await getUserByEmail(data.email)
-            console.log(isExit);
 
             if (await getUserByEmail(data.email)) {
                 console.log(getUserByEmail(data.email));
@@ -32,7 +31,7 @@ let createNewUser = (data) => {
                 })
             }
 
-            if (await findUserByPhonenumber(data.phonenumber)) resolve({
+            if (data.phonenumber && await findUserByPhonenumber(data.phonenumber)) resolve({
                 errCode: 1,
                 messagse: "phone has been exit"
             })
@@ -44,22 +43,19 @@ let createNewUser = (data) => {
                 password: hashPassword,
                 firstName: data.firstName,
                 lastName: data.lastName,
-                address: data.address,
-                phonenumber: data.phonenumber,
-                gender: data.gender == '1' ? true : false,
-                roleId: data.roleId,
+                roleId: data.roleId ? data.roleId : 2,
             })
             let user = await getUserByEmail(data.email)
             if (user) resolve({
                 errCode: 0,
                 messagse: "create success",
-                userData: user
+                //userData: user
             })
             else
                 resolve({
                     errCode: 2,
                     message: "create fail"
-            })
+                })
         } catch (e) {
             reject(e)
         }
@@ -75,13 +71,23 @@ let handleLogin = (email, password) => {
             let userData = {}
             if (user) {
                 if (bcryptjs.compareSync(password, user.password)) {
+                    let token =  await JwtAction.createJWT({
+                        email : email,
+                        roleId : user.roleId,
+                        expiresIn:process.env.JWT_EXPIRES_In,
+                    })
                     userData.errCode = 0,
-                        delete user.password
-                    userData.errMessage = 'OK',
-                        userData.user = user
+                    delete user.password
+                    userData.errMessage = 'OK';
+                    userData.token = token
+                    userData.user = user
+
+                    console.log(JwtAction.verifyToken(token));
+                    
+
                 } else {
                     userData.errCode = 2,
-                        userData.errCode = "wrong password"
+                    userData.errCode = "wrong password"
                 }
 
             } else {

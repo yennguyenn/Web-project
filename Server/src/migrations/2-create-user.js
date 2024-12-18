@@ -35,7 +35,6 @@ module.exports = {
       },
       phonenumber: {
         type: Sequelize.STRING,
-        allowNull:false,
         unique:true
       },
       roleId:{

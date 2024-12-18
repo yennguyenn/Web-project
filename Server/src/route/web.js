@@ -16,7 +16,7 @@ let initWebRouters = (app)=>{
     router.get("/api/getUserById", userControllers.getUserById)
     
     //post API
-    router.post('/api/createNewUser',userControllers.postCreateNewuser)
+    router.post('/api/register',userControllers.postCreateNewuser)
     router.post('/api/login',userControllers.handleLogin)
 
 

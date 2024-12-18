@@ -5,13 +5,16 @@ import userService from '../services/userService'
 let postCreateNewuser = async(req,res)=>{
     console.log("post createNewUser in userController");
     let message = await userService.createNewUser(req.body)
+    console.log(message);
+    
     return res.send(message)
 }
 
 let handleLogin = async(req,res)=>{
     console.log("run con handleLogin in userContrller");
-    let email = req.body.email
-    let password = req.body.password
+    let {email,username,password} = req.body
+    if(!email && username ) email = username
+    
 
     if(!email || !password){
         return res.status(500).json({
@@ -21,12 +24,9 @@ let handleLogin = async(req,res)=>{
     }
 
     let userData = await userService.handleLogin(email,password)
-
-    return res.status(200).json({
-        errCode: userData.errCode,
-        message: userData.errMessage,
-        userData: userData.user ? userData.user : {}
-    })
+    console.log(userData);
+    
+    return res.status(200).json(userData)
 }
 
 let handleDeleteUser = async (req,res) =>{
