@@ -35,7 +35,7 @@ const NavBar = () => {
       <div className='container-fluid'>
         <div className='navbar-brand ml-30 mr-0 w-400'>
           <Link to='/' className='text-brown'>
-          <img src={`${process.env.PUBLIC_URL}/img/logo.png`} alt='logo' className='logo' />
+          <img src={`${process.env.PUBLIC_URL}\logo.png`} alt='logo' className='logo' />
           </Link>
         </div>
         <div className='collapse navbar-collapse mx-0' id='navbarSupportedContent'>

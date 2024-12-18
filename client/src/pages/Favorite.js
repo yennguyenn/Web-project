@@ -143,7 +143,7 @@ const Favorite = () => {
                 <nav aria-label='breadcrumb'>
                     <ol className='breadcrumb justify-content-start no-border my-4'>
                         <li className='breadcrumb-item'><Link className='breadcrumb-link' to='/home'>Home</Link></li>
-                        <li className='breadcrumb-item'><Link className='breadcrumb-link' to={`/profile/${isAuthenticated.user.Username}`}>Account</Link></li>
+                        <li className='breadcrumb-item'><Link className='breadcrumb-link' to={`/profile/${isAuthenticated.user.Email}`}>Account</Link></li>
                         <li className='breadcrumb-item active' aria-current='page'>Favotire</li>
                     </ol>
                 </nav>
@@ -218,6 +218,5 @@ const Favorite = () => {
         </div>
     )
 }
-
 
 export default Favorite

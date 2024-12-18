@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Spinner from 'react-bootstrap/Spinner'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
 import { handleUserAddToCart } from '../services/cartService'
 import { handleAddRemoveFavorite, handleCheckFavorite } from '../services/favoriteService'
@@ -121,6 +121,11 @@ const HotItem = () => {
         )
     }
 
+    // Tự động tạo đường dẫn hình ảnh dựa trên ProductID
+    const getImagePath = (productId) => {
+        return `/images/product${productId}.png`;  // Hình ảnh sẽ có tên theo format product1.png, product2.png, ...
+    }
+
     if (loading) {
         return (
             <div className='container d-flex align-items-center justify-content-center'>
@@ -132,7 +137,7 @@ const HotItem = () => {
     }
 
     if (error) {
-        return <div><NotFound/></div>
+        return <div><NotFound /></div>
     }
 
     return (
@@ -150,24 +155,35 @@ const HotItem = () => {
             customLeftArrow={<CustomLeftArrow />}
         >
             {products.slice(0, 12).map(product => (
-                <div key={product.ProductID} className='card h-100 product-box mx-2' style={{border: 'none'}}>
+                <div key={product.ProductID} className='card h-100 product-box mx-2' style={{ border: 'none' }}>
                     <div className='product-image'>
                         <a href={`/product/detail/${product.ProductID}`}>
-                            <img src={`${process.env.PUBLIC_URL}${product.Image}`} className='card-img' alt={product.Name} />
+                            <img
+                                src={`${process.env.PUBLIC_URL}${getImagePath(product.ProductID)}`}
+                                className='card-img'
+                                alt={product.Name}
+                            />
                         </a>
                         <span className='product-promo bg-red'>hot</span>
                         <div className='product-action'>
                             <a className='i-cart' onClick={() => handleAddToCart(product.ProductID)}>
                                 <FontAwesomeIcon icon={faShoppingCart} className='mx-2' />
                             </a>
-                            <a className={`${product.isFavorite ? 'i-heart-favo' : 'i-heart'}`} onClick={() => handleToggleFavorite(product.ProductID)}>
-                                <FontAwesomeIcon icon={faHeart} className='mx-2'/>
+                            <a
+                                className={`${product.isFavorite ? 'i-heart-favo' : 'i-heart'}`}
+                                onClick={() => handleToggleFavorite(product.ProductID)}
+                            >
+                                <FontAwesomeIcon icon={faHeart} className='mx-2' />
                             </a>
                         </div>
                     </div>
                     <div className='product-content'>
-                        <h3 className='product-title fw-bold'><Link to={`/product/detail/${product.ProductID}`}>{product.Name}</Link></h3>
-                        <span className='product-price'>{product.Price.toLocaleString('vi-VN')} đ</span>
+                        <h3 className='product-title fw-bold'>
+                            <Link to={`/product/detail/${product.ProductID}`}>{product.Name}</Link>
+                        </h3>
+                        <span className='product-price'>
+                            {product.Price.toLocaleString('vi-VN')} đ
+                        </span>
                     </div>
                 </div>
             ))}

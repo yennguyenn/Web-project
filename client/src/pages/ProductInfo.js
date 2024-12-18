@@ -27,19 +27,16 @@ const ProductInfo = () => {
     }, [productid])
 
     const categoryMap = {
-        1: 'wool',
+        1: 'jewelry',
         2: 'product',
         3: 'material',
-        4: 'tool'
+        4: 'gift'
     }
 
     const subcategoryMap = {
-        1: 'animal',
-        2: 'plant',
-        3: 'food',
-        4: 'cloth',
-        5: 'accessory',
-        6: 'mochi',
+        1: 'ring',
+        2: 'necklaces',
+        3: 'bracelets',
         7: 'other'
     }
 
