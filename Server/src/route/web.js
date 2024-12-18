@@ -22,7 +22,9 @@ let initWebRouters = (app)=>{
 
     //Product API
     router.get('/api/product',prodcutControllers.handleProductRequest)
-    //router.get('/api/product')
+    router.get('/api/search-product',prodcutControllers.handlegetProductByKeyWord)
+
+    router.get('/api/admin/show-product',prodcutControllers.handleShowProduct)
     return app.use("/",router)
 }
 
