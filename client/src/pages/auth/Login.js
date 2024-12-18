@@ -1,77 +1,90 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext'
-import { handleLoginApi } from '../../services/userService'
-import './Form.scss'
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { handleLoginApi } from '../../services/userService';
+import './Form.scss';
 
 const Login = () => {
-    const [email, setEmail] = useState('') // Changed to email
-    const [password, setPassword] = useState('')
-    const [showPassword, setShowPassword] = useState(false)
-    const [isValidP, setIsValidP] = useState(true)
-    const [errEmail, setErrEmail] = useState('') // Added email error state
-    const [errPassword, setErrPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [isValidP, setIsValidP] = useState(true);
+    const [errEmail, setErrEmail] = useState('');
+    const [errPassword, setErrPassword] = useState('');
 
-    const { login } = useContext(AuthContext)
+    const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogin = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
         // Validate email and password
         if (email.trim() === '') {
-            setErrEmail('Email is required')
-            return
+            setErrEmail('Email is required');
+            return;
         }
 
         if (password.trim() === '') {
-            setIsValidP(false)
-            setErrPassword('Password is required')
-            return
+            setIsValidP(false);
+            setErrPassword('Password is required');
+            return;
         }
 
         try {
-            const response = await handleLoginApi(email, password)  // Changed to send email and password
-            console.log("API response:", response)
+            const response = await handleLoginApi(email, password);  // Send email and password
+            console.log('API response:', response);
 
             if (response.errCode === 0) {
-                const { token, user } = response
+                const { token, user } = response;
                 if (token && user) {
-                    console.log("Login successful:", token, user)
-                    login(token, user)
-                    alert(response.errMessage)
+                    console.log('Login successful:', token, user);
+
+                    // Check roleId and assign role
+                    if (user.roleId === 1) {
+                        console.log('User is an admin');
+                        localStorage.setItem('userRole', 'admin');
+                        navigate('/admin-dashboard'); 
+                    } else {
+                        console.log('User is a customer');
+                        localStorage.setItem('userRole', 'customer');
+                        navigate('/customer-dashboard');  
+                    }
+
+                    login(token, user);
+                    alert(response.errMessage);
                 } else {
-                    throw new Error('Invalid response: missing token or user')
+                    throw new Error('Invalid response: missing token or user');
                 }
             } else if (response.errCode === 3) {
-                setIsValidP(false)
-                setErrPassword(response.errMessage)
+                setIsValidP(false);
+                setErrPassword(response.errMessage);
             } else {
-                console.error('Unhandled API error:', response)
+                console.error('Unhandled API error:', response);
             }
         } catch (error) {
-            console.error('Login error:', error)
+            console.error('Login error:', error);
         }
-    }
+    };
 
     const handleOnChangeInput = (event) => {
-        const { name, value } = event.target
+        const { name, value } = event.target;
         if (name === 'email') {
-            setEmail(value)
+            setEmail(value);
             if (value.trim() !== '') {
-                setErrEmail('')
+                setErrEmail('');
             }
         } else if (name === 'password') {
-            setPassword(value)
+            setPassword(value);
             if (value.trim() !== '') {
-                setIsValidP(true)
-                setErrPassword('')
+                setIsValidP(true);
+                setErrPassword('');
             }
         }
-    }
+    };
 
     const handleShowPassword = () => {
-        setShowPassword(!showPassword)
-    }
+        setShowPassword(!showPassword);
+    };
 
     return (
         <section className="vh-100 gradient-custom">
@@ -101,8 +114,6 @@ const Login = () => {
                                                 {errEmail}
                                             </div>
                                         </div>
-
-                                        {/* Password field */}
                                         <div className="form-floating mb-4 position-relative">
                                             <input 
                                                 type={showPassword ? "text" : "password"} 
@@ -110,7 +121,7 @@ const Login = () => {
                                                 name="password" 
                                                 placeholder="Password" 
                                                 className="form-control form-control-lg input" 
-                                                style={{borderColor: (isValidP ? '' : 'red')}}
+                                                style={{ borderColor: (isValidP ? '' : 'red') }}
                                                 value={password} 
                                                 onChange={handleOnChangeInput}
                                             />
@@ -150,7 +161,7 @@ const Login = () => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

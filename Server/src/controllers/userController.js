@@ -14,7 +14,6 @@ let handleLogin = async(req,res)=>{
     console.log("run con handleLogin in userContrller");
     let {email,username,password} = req.body
     if(!email && username ) email = username
-    
 
     if(!email || !password){
         return res.status(500).json({
@@ -25,7 +24,7 @@ let handleLogin = async(req,res)=>{
 
     let userData = await userService.handleLogin(email,password)
     console.log(userData);
-    
+    //res.cookies("jwt",userData.token,{httpOnly:true, maxAge: 60*60*1000})
     return res.status(200).json(userData)
 }
 

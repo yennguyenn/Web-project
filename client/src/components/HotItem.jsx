@@ -92,7 +92,7 @@ const HotItem = () => {
             onMove,
             carouselState: { currentSlide, deviceType }
         } = rest
-    
+
         return (
             <button
                 className='arrow-left position-absolute'
@@ -103,13 +103,13 @@ const HotItem = () => {
             </button>
         )
     }
-    
+
     const CustomRightArrow = ({ onClick, ...rest }) => {
         const {
             onMove,
             carouselState: { currentSlide, deviceType }
         } = rest
-    
+
         return (
             <button
                 className='arrow-right position-absolute'
@@ -160,10 +160,11 @@ const HotItem = () => {
                     <div className='product-image'>
                         <a href={`/product/detail/${product.ProductID}`}>
                             <img
-                                src={`${process.env.PUBLIC_URL}${getImagePath(product.ProductID)}`}
+                                src={`${process.env.PUBLIC_URL}/images/product${product.ProductID}.png`}
                                 className='card-img'
                                 alt={product.Name}
                             />
+
                         </a>
                         <span className='product-promo bg-red'>hot</span>
                         <div className='product-action'>

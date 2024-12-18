@@ -8,12 +8,12 @@ import './ProductPage.scss'
 const categoryMap = {
     jewelry: 1,
     product: 2,
-    material: 3,
-    gift: 4
+    // material: 3,
+    // gift: 4
 }
 
 const subcategoryMap = {
-    ring: 1,
+    rings: 1,
     necklaces: 2,
     bracelets: 3,
     watches: 4,

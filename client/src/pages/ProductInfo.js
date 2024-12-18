@@ -29,12 +29,12 @@ const ProductInfo = () => {
     const categoryMap = {
         1: 'jewelry',
         2: 'product',
-        3: 'material',
-        4: 'gift'
+        // 3: 'material',
+        // 4: 'gift'
     }
 
     const subcategoryMap = {
-        1: 'ring',
+        1: 'rings',
         2: 'necklaces',
         3: 'bracelets',
         4: 'watches',
