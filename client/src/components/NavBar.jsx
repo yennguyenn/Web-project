@@ -1,34 +1,34 @@
-import { faBell, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
-import { useSearch } from '../context/SearchContext'
-import { AuthContext } from '../context/AuthContext'
-import { CartContext } from '../context/CartContext'
-import Search from './Search'
+import { faBell, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useSearch } from '../context/SearchContext';
+import { AuthContext } from '../context/AuthContext';
+import { CartContext } from '../context/CartContext';
+import Search from './Search';
 
-import './NavBar.scss'
+import './NavBar.scss';
 
 const NavBar = () => {
-  const { isAuthenticated, logout } = useContext(AuthContext)
-  const { cartQuantity } = useContext(CartContext)
-  const { updateKeyword } = useSearch()
-  const { category, subcategory } = useParams()
-  
-  console.log(category, subcategory)
-  console.log(isAuthenticated.user, isAuthenticated.token)
+  const { isAuthenticated, logout } = useContext(AuthContext);
+  const { cartQuantity } = useContext(CartContext);
+  const { updateKeyword } = useSearch();
+  const { category, subcategory } = useParams();
 
-  const navigate = useNavigate()
+  console.log(category, subcategory);
+  console.log(isAuthenticated.user, isAuthenticated.token);
+
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout()
-    navigate('/')
-  }
+    logout();
+    navigate('/');
+  };
 
   const handleSearch = (keyword) => {
-    updateKeyword(keyword)
+    updateKeyword(keyword);
     navigate('/product/search');
-  }
+  };
 
   return (
     <nav className='navbar navbar-expand-lg sticky-top w-100 menu bg-white'>
@@ -47,7 +47,7 @@ const NavBar = () => {
             </li>
             <li className='nav-item'>
               <div className='text-black mx-3'>
-                <Link to='/product/wool' className='text-brown'>WOOL</Link>
+                <Link to='/product/jewelry' className='text-brown'>JEWELRY</Link>
               </div>
             </li>
             <li className='nav-item dropdown mx-3 d-flex align-item-center'>
@@ -56,23 +56,27 @@ const NavBar = () => {
               </div>
               <div className='dropdown-toggle' role='button' data-bs-toggle='dropdown' aria-expanded='false'></div>
               <ul className='dropdown-menu'>
-                <li className='dropdown-item'><Link to='/product/product/animal' className='text-brown'>Animal</Link></li>
-                <li className='dropdown-item'><Link to='/product/product/plant' className='text-brown'>Plant</Link></li>
-                <li className='dropdown-item'><Link to='/product/product/food' className='text-brown'>Food</Link></li>
-                <li className='dropdown-item'><Link to='/product/product/cloth' className='text-brown'>Cloth</Link></li>
-                <li className='dropdown-item'><Link to='/product/product/accessory' className='text-brown'>Accessory</Link></li>
-                <li className='dropdown-item'><Link to='/product/product/mochi' className='text-brown'>Mochi</Link></li>
+                <li className='dropdown-item'><Link to='/product/product/ring' className='text-brown'>Ring</Link></li>
+                <li className='dropdown-item'><Link to='/product/product/necklaces' className='text-brown'>Necklaces</Link></li>
+                <li className='dropdown-item'><Link to='/product/product/earrings' className='text-brown'>Earrings</Link></li>
+                <li className='dropdown-item'><Link to='/product/product/bracelets' className='text-brown'>Bracelets</Link></li>
                 <li className='dropdown-item'><Link to='/product/product/other' className='text-brown'>Other</Link></li>
+              </ul>
+            </li>
+            <li className='nav-item dropdown mx-3 d-flex align-item-center'>
+              <div className='text-black px-1'>
+                <Link to='/product/material' className='text-brown'>MATERIAL</Link>
+              </div>
+              <div className='dropdown-toggle' role='button' data-bs-toggle='dropdown' aria-expanded='false'></div>
+              <ul className='dropdown-menu'>
+                <li className='dropdown-item'><Link to='/product/material/gold' className='text-brown'>Gold</Link></li>
+                <li className='dropdown-item'><Link to='/product/material/silver' className='text-brown'>Silver</Link></li>
+                <li className='dropdown-item'><Link to='/product/material/platinum' className='text-brown'>Platinum</Link></li>
               </ul>
             </li>
             <li className='nav-item'>
               <div className='text-black mx-3'>
-                <Link to='/product/material' className='text-brown'>MATERIAL</Link>
-              </div>
-            </li>
-            <li className='nav-item'>
-              <div className='text-black mx-3'>
-                <Link to='/product/tool' className='text-brown'>TOOL</Link>
+                <Link to='/product/gifts' className='text-brown'>GIFTS</Link>
                 </div>
             </li>
           </ul>
@@ -104,7 +108,7 @@ const NavBar = () => {
                       <FontAwesomeIcon icon={faUser} className='text-brown mx-2 icon-nav' />
                     </div>
                     <ul className=' dropdown-menu dropdown-menu-end'>
-                        <li><Link to={`/profile/${isAuthenticated.user.Username}`} className='text-brown dropdown-item text-dark'>Your Profile</Link></li>
+                        <li><Link to={`/profile/${isAuthenticated.user.Email}`} className='text-brown dropdown-item text-dark'>Your Profile</Link></li>
                         <li><Link to='/comming-soon' className='text-brown dropdown-item' style={{cursor: 'no-drop'}}>Help & Support</Link></li>
                         <li><hr className='dropdown-divider'/></li>
                         <li className='dropdown-item' style={{cursor: 'pointer'}} onClick={handleLogout}>Sign out</li>
@@ -131,7 +135,7 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
