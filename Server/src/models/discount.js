@@ -14,7 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Discount.init({
-    discountId: DataTypes.INTEGER,
+    discountId: {
+      type:DataTypes.INTEGER,
+      autoIncrement:true,
+      primaryKey:true,
+
+    },
     description: DataTypes.TEXT,
   }, {
     sequelize,

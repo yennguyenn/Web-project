@@ -38,7 +38,7 @@ let findProductsByProductType = async (productTypeId) => {
             });
 
             let products = await db.Product.findAll({
-                where: {productTypeId : productTypeId}
+                where: {categoryId : productTypeId}
             });
 
             resolve(products);
@@ -85,7 +85,7 @@ let showProduct = async () =>{
 
             resolve (products)
         } catch (error) {
-            resolve(error)
+            reject(error)
         }
     })
 }

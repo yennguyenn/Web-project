@@ -14,8 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Role.init({
-    RoleId:DataTypes.INTEGER,
-    description: DataTypes.TEXT
+    RoleId:{
+      type :DataTypes.INTEGER,
+      primaryKey:true,
+      autoIncrement:true,
+    },
+    description: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Role',

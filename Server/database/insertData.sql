@@ -16,14 +16,16 @@ INSERT INTO users (userId, email, password, firstName, lastName, address, gender
 (5, 'guest@example.com', 'guestpass', 'Guest', 'User', '654 Maple St', 1, '7778889999', 5, 'guest.jpg', NOW(), NOW());
 
 -- Tạo dữ liệu cho bảng producttypes
-INSERT INTO producttypes (productTypeId, description, createdAt, updatedAt) VALUES
+INSERT INTO categories (categoryId, description,createdAt,updatedAt) VALUES
 (1, 'Necklaces', NOW(), NOW()),
 (2, 'Rings', NOW(), NOW()),
 (3, 'Bracelets', NOW(), NOW()),
-(4, 'Earrings', NOW(), NOW());
+(4, 'Earrings', NOW(), NOW()),
+(5,'watch',NOW(),NOW()),
+(6,'other',NOW(),NOW());
 
 -- Tạo dữ liệu cho bảng products
-INSERT INTO products (productId, productName, price, productTypeId, quantityInStock, description, image, createdAt, updatedAt) VALUES
+INSERT INTO products (productId, productName, price, categoryId, quantityInStock, description, image, createdAt, updatedAt) VALUES
 (1, 'Gold Necklace', 1500.00, 1, 10, '18K gold necklace with diamonds', 'gold_necklace.jpg', NOW(), NOW()),
 (2, 'Diamond Ring', 2500.00, 2, 15, 'Platinum ring with diamond', 'diamond_ring.jpg', NOW(), NOW()),
 (3, 'Silver Bracelet', 300.00, 3, 20, 'Sterling silver bracelet', 'silver_bracelet.jpg', NOW(), NOW()),
@@ -39,7 +41,7 @@ INSERT INTO discounts (discountId, description, createdAt, updatedAt) VALUES
 (5, '5% off on all purchases', NOW(), NOW());
 
 -- Tạo dữ liệu cho bảng recievediscount
-INSERT INTO recievediscount (discountId, userId, createdAt, updatedAt) VALUES
+INSERT INTO recievediscounts (discountId, userId, createdAt, updatedAt) VALUES
 (1, 1, NOW(), NOW()),
 (2, 2, NOW(), NOW()),
 (3, 3, NOW(), NOW()),
@@ -63,7 +65,7 @@ INSERT INTO invoices (invoiceId, userId, totalPrice, paymentId, createdAt, updat
 (5, 5, 2800.00, 5, NOW(), NOW());
 
 -- Tạo dữ liệu cho bảng bought
-INSERT INTO bought (invoiceId, productId, quantity, totalPrice, createdAt, updatedAt) VALUES
+INSERT INTO bougths (invoiceId, productId, quantity, totalPrice, createdAt, updatedAt) VALUES
 (1, 1, '1', 1500.00, NOW(), NOW()),
 (2, 2, '1', 2500.00, NOW(), NOW()),
 (3, 3, '1', 300.00, NOW(), NOW()),

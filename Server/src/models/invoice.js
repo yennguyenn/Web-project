@@ -14,8 +14,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Invoice.init({
-    invoiceId: DataTypes.STRING,
-    userId: DataTypes.STRING,
+    invoiceId: {
+      type:DataTypes.INTEGER,
+      autoIncrement:true,
+      primaryKey:true,
+    },
+    userId: {
+      type:DataTypes.STRING,
+      allowNull:false,
+    },
     totalPrice: DataTypes.DECIMAL(10,2),
     paymentId: DataTypes.INTEGER,
     createAt: DataTypes.DATE,

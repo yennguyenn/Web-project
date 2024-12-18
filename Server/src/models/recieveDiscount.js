@@ -14,8 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   RecieveDiscount.init({
-    discountId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
+    discountId: {
+      type: DataTypes.INTEGER,
+      allowNull:false,
+    },
+    userId: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+    }
   }, {
     sequelize,
     modelName: 'RecieveDiscount',

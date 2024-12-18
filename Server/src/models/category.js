@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     categoryId: {
         type :DataTypes.INTEGER, 
         primaryKey:true,
+        autoIncrement:true,
     },
     description:{
       type: DataTypes.STRING,
