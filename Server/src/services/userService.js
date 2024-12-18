@@ -74,16 +74,13 @@ let handleLogin = (email, password) => {
                     let token =  await JwtAction.createJWT({
                         email : email,
                         roleId : user.roleId,
-                        exp:process.env.JWT_EXPIRES_In,
+                        exp:3600,
                     })
                     userData.errCode = 0,
                     delete user.password
                     userData.errMessage = 'OK';
                     userData.token = token
-                    userData.user = user
-
-                    console.log(JwtAction.verifyToken(token));
-                    
+                    userData.user = user    
 
                 } else {
                     userData.errCode = 2,
