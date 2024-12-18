@@ -92,7 +92,7 @@ const HotItem = () => {
             onMove,
             carouselState: { currentSlide, deviceType }
         } = rest
-
+    
         return (
             <button
                 className='arrow-left position-absolute'
@@ -103,13 +103,13 @@ const HotItem = () => {
             </button>
         )
     }
-
+    
     const CustomRightArrow = ({ onClick, ...rest }) => {
         const {
             onMove,
             carouselState: { currentSlide, deviceType }
         } = rest
-
+    
         return (
             <button
                 className='arrow-right position-absolute'
@@ -123,7 +123,7 @@ const HotItem = () => {
 
     // Tự động tạo đường dẫn hình ảnh dựa trên ProductID
     const getImagePath = (productId) => {
-        console.log(`ProductID: `)
+        
         return `/images/product${productId}.png`;  // Hình ảnh sẽ có tên theo format product1.png, product2.png, ...
     }
 
@@ -160,11 +160,10 @@ const HotItem = () => {
                     <div className='product-image'>
                         <a href={`/product/detail/${product.ProductID}`}>
                             <img
-                                src={`${process.env.PUBLIC_URL}/images/product${product.ProductID}.png`}
+                                src={`${product.image}`}
                                 className='card-img'
                                 alt={product.Name}
                             />
-
                         </a>
                         <span className='product-promo bg-red'>hot</span>
                         <div className='product-action'>
