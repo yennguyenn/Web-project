@@ -74,7 +74,7 @@ let handleLogin = (email, password) => {
                     let token =  await JwtAction.createJWT({
                         email : email,
                         roleId : user.roleId,
-                        expiresIn:process.env.JWT_EXPIRES_In,
+                        exp:process.env.JWT_EXPIRES_In,
                     })
                     userData.errCode = 0,
                     delete user.password
