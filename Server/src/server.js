@@ -5,6 +5,7 @@ import initWebRouters from "./route/web"
 import connectDB from "./config/connectDB"
 import jwtAction from "./middleware/JWTaction"
 import cookieParser from "cookie-parser"
+import db from "./models"
 
 const cors = require('cors')
 require("dotenv").config()
@@ -30,6 +31,14 @@ viewEngine(app)
 initWebRouters(app)
 
 connectDB()
+
+db.sequelize.sync({alter:true})
+.then(()=>{
+    console.log("sync database success");
+    
+}).catch((error)=>{
+    console.error(error)
+})
 
 let port = process.env.PORT || 6969
 

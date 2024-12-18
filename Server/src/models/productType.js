@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ProductType.init({
-    productTypeId:DataTypes.INTEGER,
+    productTypeId:{
+      type:DataTypes.INTEGER,
+      primaryKey:true,
+      autoIncrement:true,
+    },
     description: DataTypes.TEXT
   }, {
     sequelize,

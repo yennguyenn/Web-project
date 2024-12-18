@@ -33,9 +33,20 @@ let handlegetProductByKeyWord = async(req,res) =>{
     let message = await productservice.findProductsByKeyword(req.query.keyword)
     res.status(200).json(message)
 }
+
+let handleHotProduct = ()=>{
+
+}
+
+let handleGetNewProduct = ()=>{
+
+}
+
 module.exports={
     handleGetProductById:handleGetProductById,
     handleProductRequest : handleProductRequest,
     handlegetProductByKeyWord : handlegetProductByKeyWord,
     handleShowProduct : handleShowProduct,
+    handleHotProduct: handleHotProduct,
+    handleGetNewProduct:handleGetNewProduct,
 }

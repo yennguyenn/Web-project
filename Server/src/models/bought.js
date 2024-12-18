@@ -14,10 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Bougth.init({
-    invoiceId: DataTypes.INTEGER, 
-    productId: DataTypes.INTEGER,
-    quantity: DataTypes.INTEGER,
-    totalPrice: DataTypes.DECIMAL(10,2),
+    invoiceId: {
+      type:DataTypes.INTEGER, 
+      allowNull:false,
+    },
+    productId: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+    },
+    quantity: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        min:0.01
+      }
+    },
+    totalPrice: {
+      type: DataTypes.DECIMAL(10,2),
+    }
   }, {
     sequelize,
     modelName: 'Bougth',
