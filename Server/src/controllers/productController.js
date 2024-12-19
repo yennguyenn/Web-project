@@ -34,12 +34,17 @@ let handlegetProductByKeyWord = async(req,res) =>{
     res.status(200).json(message)
 }
 
-let handleHotProduct = ()=>{
-
+let handleHotProduct = async (req,res)=>{
+    console.log("run handleHotProduct in productController");
+    let message  = await productservice.getProductById(1)
+    res.status(200).json(message)
 }
 
-let handleGetNewProduct = ()=>{
-
+let handleGetNewProduct = async(req,res)=>{
+    console.log("run handleGetNewProduct in productController");
+    let message = await productservice.getProductById(1);
+    res.status(200).json(message)
+    
 }
 
 module.exports={

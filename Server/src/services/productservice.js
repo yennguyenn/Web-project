@@ -89,12 +89,7 @@ let showProduct = async () =>{
         }
     })
 }
-module.exports = {
-    findProductById: findProductById,
-    findProductsByProductType: findProductsByProductType,
-    findProductsByKeyword: findProductsByKeyword,
-    showProduct :showProduct,
-};
+
 
 // Support method
 let getProductById = async (productId) => {
@@ -110,4 +105,12 @@ let getProductById = async (productId) => {
             reject(error);
         }
     });
+};
+
+module.exports = {
+    findProductById: findProductById,
+    findProductsByProductType: findProductsByProductType,
+    findProductsByKeyword: findProductsByKeyword,
+    showProduct :showProduct,
+    getProductById:getProductById,
 };
