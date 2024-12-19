@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "NhanHoa",
-    "password": "1234",
-    "database": "test",
+    "username": "root",
+    "password": "yennguyen@",
+    "database": "project",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "logging": false
